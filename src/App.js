@@ -13,7 +13,6 @@ function App() {
       <div className="song-section">
         <div className="song-content">
           <img className="album" id="albumImage" src={data.album.images[0].url} alt="albumImage"
-          width="250" 
           />
           <p className="sTitle">{data.name}</p>
           <p className="sArtist">{data.artists[0].name}</p>
