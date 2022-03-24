@@ -1,25 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
-import data from './module';
+import Card from './component/card';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-      <div class="header">
+      <div className="header">
       <h1>Create Playlist</h1>
       </div>
-
-      <div className="song-section">
-        <div className="song-content">
-          <img className="album" id="albumImage" src={data.album.images[0].url} alt="albumImage"
-          />
-          <p className="sTitle">{data.name}</p>
-          <p className="sArtist">{data.artists[0].name}</p>
-         <button className="btn select">Select</button>
-        </div>
-      </div>
       </header>
+
+      <div className="Card-list">
+      <Card/>
+      <Card/>
+      <Card/>
+      </div>
     </div>
   );
 }
