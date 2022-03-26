@@ -1,5 +1,6 @@
 import './App.css';
-import Card from './component/card';
+// import Card from './component/card';
+import Module from './module';
 
 function App() {
   return (
@@ -11,9 +12,8 @@ function App() {
       </header>
 
       <div className="Card-list">
-      <Card/>
-      <Card/>
-      <Card/>
+      {/* <Card/> */}
+      <Module/>
       </div>
     </div>
   );
