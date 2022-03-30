@@ -2,11 +2,13 @@ const Card =(props)=>{
     return(
         <div className="song-section">
         <div className="song-content">
-          <img className="album" id="albumImage" src={props.album} alt="albumImage"
+          <img className="album" id="albumImage" src={props.album} alt="albumImage" height="240"
           />
-          <p className="sTitle">{props.title}</p>
-          <p className="sArtist">{props.artist}</p>
-         <button className="btn select">Select</button>
+          <div className="song-info">
+            <p className="sTitle">{props.title}</p>
+            <p className="sArtist">{props.artist}</p>
+            <button className="btn select">Select</button>
+          </div>
         </div>
       </div>   
     )

@@ -1,3 +1,8 @@
+body {
+  background-color: rgb(76, 76, 151);
+  color: lavender;
+}
+
 .App {
   text-align: center;
   font-family: "Poppins", serif;
@@ -14,7 +19,7 @@
   }
 }
 
-.App-header {
+.header-login {
   background-color: rgb(76, 76, 151);
   min-height: 25vh;
   display: flex;
@@ -38,6 +43,39 @@
   }
 }
 
+.container{
+  display: flex;
+  flex-wrap: wrap;
+  flex-flow: column-wrap;
+  justify-content: center;
+}
+
+.search-section input{
+  font-family: "Poppins", sans-serif;
+  width: 200px;
+}
+
+.search-section button{
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  background-color: lavender;
+  border-color: lavender;
+  color: rgb(76, 76, 151);
+
+}
+
+.song-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 200px;
+ }
+
+ .song-info button, p{
+   width: 200px;
+   margin: auto;
+ }
+
 .btn {
   height: 50px;
   background-color: lavender;
@@ -50,24 +88,27 @@
   width: 320px;
 }
 
-.song-content {
-  border: 8px solid lavender;
-  border-radius: 30px;
-  width: fit-content;
-  text-align: center;
-  margin: 30px;
-  padding: 30px;
-  font-weight: bold;
-}
-
-.Card-list {
+/* .Card-list {
   background-color: rgb(76, 76, 151);
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: lavender;
   width: auto;
+} */
+
+.song-content {
+  border: 8px solid lavender;
+  border-radius: 30px;
+  width: 500px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+  margin: 30px;
+  padding: 30px;
+  font-weight: bold;
 }
