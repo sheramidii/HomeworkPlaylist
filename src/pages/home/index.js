@@ -1,14 +1,35 @@
 import Card from "../../component/card";
+import { useState, useEffect } from "react";
 
-const Home = ({passData}) => {
+const Home = ({tracks}) => {
+  const [selectedTrack, setSelectedTrack] = useState([]);
+  const [mergedTracks, setMergedTracks] = useState([]);
+
+  const handleSelectTrack = (uri)=>{
+    const alreadySelected = selectedTrack.find(t => t.uri === uri)
+    if (alreadySelected){
+      setSelectedTrack(selectedTrack.filter(t => t.uri === uri))
+    }
+    else {
+      setSelectedTrack([...selectedTrack,uri])
+    }
+    console.log(selectedTrack);
+  };
+
+  useEffect (() =>{
+    const mergedTracksWithSelectedTracks = tracks.map((uri) =>({
+      ...uri,
+      isSelected: selectedTrack.find((t) => t === uri),
+    }));
+    setMergedTracks(mergedTracksWithSelectedTracks);
+  },[selectedTrack,tracks]);
 
   return (
     <div className="container">
-      {passData.map((card) => {
+      {mergedTracks.map((card) => {
+        
         return(
-            passData !== undefined && (
-                <Card album={card.album.images[0].url} title={card.name} artist={card.artists[0].name} key={card.id}/>
-            )
+          <Card id={card} onSelectTrack={handleSelectTrack} key={card.uri} uri={card.uri}/>
         )
       })}
     </div>
