@@ -11,13 +11,15 @@ const Search = ({accessToken})=> {
     }
 
    const searchCard = async (e) =>{
-    const cards = await axios.get(
-      `http://api.spotify.com/v1/search?q=${query}&type=track&access_token=${accessToken}`
-    )
-    .then((response) => response)
-    .catch((error) => error);
-    setData(cards.data.tracks.items);
-   console.log(cards);
+    try {
+      const cards = await axios.get(
+        `http://api.spotify.com/v1/search?q=${query}&type=track&access_token=${accessToken}`
+      )
+      setData(cards.data.tracks.items);
+     console.log(cards);
+    } catch (error) {
+      console.log('error');
+    } 
    }
 
     return (

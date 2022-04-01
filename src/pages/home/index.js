@@ -2,37 +2,41 @@ import Card from "../../component/card";
 import { useState, useEffect } from "react";
 
 const Home = ({tracks}) => {
-  const [selectedTrack, setSelectedTrack] = useState([]);
+  const [selectedTracks, setSelectedTracks] = useState([]);
   const [mergedTracks, setMergedTracks] = useState([]);
 
   const handleSelectTrack = (uri)=>{
-    const alreadySelected = selectedTrack.find(t => t.uri === uri)
+    const alreadySelected = selectedTracks.find(selectedTrack => selectedTrack === uri)
     if (alreadySelected){
-      setSelectedTrack(selectedTrack.filter(t => t.uri === uri))
+      setSelectedTracks(selectedTracks.filter(selectedTrack => selectedTrack !== uri))
     }
     else {
-      setSelectedTrack([...selectedTrack,uri])
+      setSelectedTracks((selectedTracks)=>[...selectedTracks,uri])
     }
-    console.log(selectedTrack);
+    console.log(selectedTracks);
   };
 
   useEffect (() =>{
-    const mergedTracksWithSelectedTracks = tracks.map((uri) =>({
-      ...uri,
-      isSelected: selectedTrack.find((t) => t === uri),
+    const mergedTracksWithSelectedTracks = tracks.map((track) =>({
+      ...track,
+      isSelected: !!selectedTracks.find((selectedTrack) => selectedTrack === track.uri),
     }));
     setMergedTracks(mergedTracksWithSelectedTracks);
-  },[selectedTrack,tracks]);
+  },[selectedTracks,tracks]);
 
-  return (
-    <div className="container">
-      {mergedTracks.map((card) => {
-        
-        return(
-          <Card id={card} onSelectTrack={handleSelectTrack} key={card.uri} uri={card.uri}/>
-        )
-      })}
-    </div>
-  );
+  const renderTracks =() =>{
+    return (
+      <div className="container">
+        {mergedTracks.map((card) => {
+          const {uri} = card;
+          return(
+            <Card onSelectTrack={handleSelectTrack} key={uri} item={card}/>
+          )
+        })}
+      </div>
+    );
+  };
+
+  return <>{renderTracks()}</>;
 };
 export default Home;
