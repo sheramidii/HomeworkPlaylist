@@ -50,9 +50,32 @@ body {
   justify-content: center;
 }
 
+.form-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.playlistForm{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+}
+
+.playlistForm input, textarea{
+  font-family: "Poppins", sans-serif;
+  align-self: center;
+  min-width: 320px;
+  max-width: 320px;
+  min-height: 20px;
+  margin-bottom: 20px;
+}
+
+
 .search-section input{
   font-family: "Poppins", sans-serif;
-  width: 200px;
+  width: 320px;
 }
 
 .search-section button{
@@ -61,6 +84,7 @@ body {
   background-color: lavender;
   border-color: lavender;
   color: rgb(76, 76, 151);
+  margin-bottom: 20px;
 
 }
 

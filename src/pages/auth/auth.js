@@ -1,7 +1,7 @@
 import queryString from 'query-string';
 import { useState, useEffect } from 'react';
-import Login from '../login';
-import Search from '../search';
+import Login from '../login/login.js';
+import Search from '../search/search.js';
 
 const Auth = () => {
     const [accessToken, setAccessToken] = useState("");
