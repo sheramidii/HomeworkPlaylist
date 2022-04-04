@@ -4,8 +4,10 @@ import axios from "axios";
 import Card from "../../component/card/card.jsx";
 import FormSubmission from "../../component/form/form.jsx";
 import { url } from "../login/login.js";
+import { useSelector } from 'react-redux';
 
-const Search = ({accessToken})=> {
+const Search = ()=> {
+   const accessToken = useSelector(state => state.dataAccessToken.value); 
    const [tracksData, setTracksData] = useState([]);
    const [query, setQuery] = useState();
    const [selectedTracks, setSelectedTracks] = useState([]);
