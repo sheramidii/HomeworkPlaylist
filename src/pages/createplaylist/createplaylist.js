@@ -6,7 +6,7 @@ import FormSubmission from "../../component/form/form.jsx";
 import { url } from "../login/login.js";
 import { useSelector } from 'react-redux';
 
-const Search = ()=> {
+const CreatePlaylist = ()=> {
    const accessToken = useSelector(state => state.dataAccessToken.value); 
    const [tracksData, setTracksData] = useState([]);
    const [query, setQuery] = useState();
@@ -196,4 +196,4 @@ const Search = ()=> {
         </>
       );
   };
-  export default Search;
+  export default CreatePlaylist;
