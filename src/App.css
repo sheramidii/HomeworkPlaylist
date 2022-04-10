@@ -30,6 +30,10 @@ body {
   color: lavender;
 }
 
+.header-login img{
+  margin-bottom: 60px;
+}
+
 .App-link {
   color: #61dafb;
 }
@@ -72,6 +76,16 @@ body {
   margin-bottom: 20px;
 }
 
+.header-page{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  margin-left: 655px;
+}
+
+.header-search{
+  margin-right: 80px;
+}
 
 .search-section input{
   font-family: "Poppins", sans-serif;
@@ -85,7 +99,10 @@ body {
   border-color: lavender;
   color: rgb(76, 76, 151);
   margin-bottom: 20px;
+}
 
+.log-user h2{
+  margin-bottom: 32px;
 }
 
 .song-info {
@@ -111,18 +128,6 @@ body {
   color: rgb(76, 76, 151);
   width: 320px;
 }
-
-/* .Card-list {
-  background-color: rgb(76, 76, 151);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: lavender;
-  width: auto;
-} */
 
 .song-content {
   border: 8px solid lavender;

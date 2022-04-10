@@ -1,4 +1,4 @@
-const FormSubmission = ({addPlaylist, handleAddPlaylistChange, handleAddPlaylistSubmit, playlistID, selectedTracks}) => {
+const FormSubmission = ({addPlaylist, handleAddPlaylistChange, handleAddPlaylistSubmit}) => {
     return (
         <div className="form-container">
             <form className="playlistForm" onSubmit={handleAddPlaylistSubmit}>

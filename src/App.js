@@ -1,5 +1,4 @@
 import './App.css';
-// import Auth from './pages/auth/auth.js';
 import AppRouter from './pages/router/router';
 
 function App() {
