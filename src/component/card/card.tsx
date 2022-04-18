@@ -1,3 +1,6 @@
+//change to tsx
+import { RootObject } from "../../storagets";
+
 const Card =({item, onSelectTrack})=>{
   const {album, artists, name: songName, isSelected, uri} =item
 

@@ -1,12 +1,14 @@
+//change to tsx
+
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Card from "../../component/card/card.jsx";
+import Card from "../../component/card/card";
 import FormSubmission from "../../component/form/form.jsx";
 import { url } from "../login/login.js";
-import { useSelector } from 'react-redux';
+import { useAppSelector } from "../../data/hooks";
 
 const CreatePlaylist = ()=> {
-   const accessToken = useSelector(state => state.dataAccessToken.value); 
+   const accessToken = useAppSelector(state => state.dataAccessToken.value); 
    const [tracksData, setTracksData] = useState([]);
    const [query, setQuery] = useState();
    const [selectedTracks, setSelectedTracks] = useState([]);
@@ -35,7 +37,7 @@ const CreatePlaylist = ()=> {
   ///select handler///
    
 
-  ///search tracks aka card///
+  ///search tracks aka card change to tsx///
    const handleInput = (e) => { 
     setQuery(e.target.value)
     }
@@ -54,7 +56,7 @@ const CreatePlaylist = ()=> {
    }
    ///search tracks aka card///
 
-  ///render tracks/// 
+  ///render tracks change to tsx/// 
 
   const renderTracks =() =>{
     return (
@@ -100,7 +102,7 @@ const CreatePlaylist = ()=> {
     description: '',
    })
 
-   const [playlistID, setPlaylistID] = useState(url);
+   const [playlistID, setPlaylistID] = useState<string>(url);
    const bodyParams = {
     name: addPlaylist.name,
     description: addPlaylist.description,
@@ -171,8 +173,8 @@ const CreatePlaylist = ()=> {
                     handleAddPlaylistChange={handleAddPlaylistChange}
                     handleAddPlaylistSubmit={handleAddPlaylistSubmit}
                     addPlaylist={addPlaylist}
-                    playlistID={playlistID}
-                    selectedTracks={selectedTracks}/>
+                    key={playlistID}
+                    />
                 <>{renderTracks()}</>
             </div>
         </>

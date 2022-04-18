@@ -1,4 +1,8 @@
-const FormSubmission = ({addPlaylist, handleAddPlaylistChange, handleAddPlaylistSubmit}) => {
+interface props{
+    addPlaylist
+}
+
+const FormSubmission = ({addPlaylist, handleAddPlaylistChange, handleAddPlaylistSubmit, }) => {
     return (
         <div className="form-container">
             <form className="playlistForm" onSubmit={handleAddPlaylistSubmit}>
@@ -12,12 +16,11 @@ const FormSubmission = ({addPlaylist, handleAddPlaylistChange, handleAddPlaylist
                 name="name"
                 onChange={handleAddPlaylistChange}
                 value={addPlaylist.name}
-                required minLength="10"/>
+                required minLength={10}/>
 
                 <label className="formSubhead" htmlFor="descInput">Description</label>
                 <textarea
                 className="formDescription"
-                type="text"
                 placeholder="What's your playlist about?"
                 id="description"
                 name="description"
