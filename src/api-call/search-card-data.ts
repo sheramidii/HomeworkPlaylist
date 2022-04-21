@@ -11,6 +11,6 @@ export const searchCardData = async (query: string, accessToken: string): Promis
         `https://api.spotify.com/v1/search?q=${query}&type=track&access_token=${accessToken}`
       )
       .catch((error) => error)
-    console.log(cards);
-    return cards; 
+    console.log(cards.data.tracks.items);
+    return cards.data.tracks.items; 
    }
