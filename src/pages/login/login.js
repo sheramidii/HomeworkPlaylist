@@ -1,6 +1,6 @@
 const Login = () => {
     const clientID = process.env.REACT_APP_SPOTIFY_KEY;
-    const redirectURI = process.env.REACT_APP_SPOTIFY_CALLBACK; //tambahin vercel env disini//
+    const redirectURI = process.env.REACT_APP_SPOTIFY_CALLBACK;
     const scope = 'playlist-modify-private playlist-modify-public';
 
     var url = 'https://accounts.spotify.com/authorize';
