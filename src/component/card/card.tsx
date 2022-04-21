@@ -1,7 +1,13 @@
 //change to tsx
 import { RootObject } from "../../storagets";
 
-const Card =({item, onSelectTrack})=>{
+interface propTrack{
+  item: RootObject
+  onSelectTrack: (uri: string) => void
+
+}
+
+const Card =({item, onSelectTrack}: propTrack)=>{
   const {album, artists, name: songName, isSelected, uri} =item
 
     return(

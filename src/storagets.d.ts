@@ -1411,4 +1411,5 @@
         type: string;
         uri: string;
         is_local: boolean;
+        isSelected?: RootObject
     }

@@ -1,11 +1,12 @@
-//change to tsx
+
 
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Card from "../../component/card/card";
-import FormSubmission from "../../component/form/form.jsx";
+import FormSubmission from "../../component/form/form";
 import { url } from "../login/login.js";
 import { useAppSelector } from "../../data/hooks";
+import { searchCardData } from "../../api-call/search-card-data";
 
 const CreatePlaylist = ()=> {
    const accessToken = useAppSelector(state => state.dataAccessToken.value); 
@@ -24,7 +25,7 @@ const CreatePlaylist = ()=> {
 
    
    ///select handler///
-   const handleSelectTrack = (uri)=>{
+  const handleSelectTrack = (uri)=>{
     const alreadySelected = selectedTracks.find(selectedTrack => selectedTrack === uri)
       if (alreadySelected){
         setSelectedTracks(selectedTracks.filter(selectedTrack => selectedTrack !== uri))
@@ -36,27 +37,19 @@ const CreatePlaylist = ()=> {
   };
   ///select handler///
    
-
-  ///search tracks aka card change to tsx///
-   const handleInput = (e) => { 
+  const handleInput = (e) => { 
     setQuery(e.target.value)
-    }
+  }
 
-   const searchCard = async () =>{
-    try {
-      const cards = await axios
-      .get(
-        `http://api.spotify.com/v1/search?q=${query}&type=track&access_token=${accessToken}`
-      )
-      setTracksData(cards.data.tracks.items);
-     console.log(cards);
-    } catch (error) {
-      console.log('error');
-    } 
-   }
-   ///search tracks aka card///
+  ///search tracks aka card///
+  const searchCard = async () =>{
+    const cards = await searchCardData (query, accessToken);
+    setTracksData (cards);
+    console.log(cards);
+  }
+  ///search tracks aka card///
 
-  ///render tracks change to tsx/// 
+  ///render tracks/// 
 
   const renderTracks =() =>{
     return (
@@ -102,7 +95,7 @@ const CreatePlaylist = ()=> {
     description: '',
    })
 
-   const [playlistID, setPlaylistID] = useState<string>(url);
+   const [playlistID, setPlaylistID] = useState(url);
    const bodyParams = {
     name: addPlaylist.name,
     description: addPlaylist.description,

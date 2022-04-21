@@ -1,7 +1,3 @@
-interface props{
-    addPlaylist
-}
-
 const FormSubmission = ({addPlaylist, handleAddPlaylistChange, handleAddPlaylistSubmit, }) => {
     return (
         <div className="form-container">
