@@ -12,14 +12,14 @@ const Login = () => {
   return (
     <>
       <div className="header-login">
-        <h1>Welcome to Spotify!</h1>
+        <h1>Welcome to TuneList!</h1>
         <img
           alt="spotify logo"
           src="https://pnggrid.com/wp-content/uploads/2021/05/White-Spotify-Icon-1024x1024.png"
           width="200px"
         />
         <a href={url}>
-          <button className="btn login">Login</button>
+          <button className="btn login">Login with Spotify</button>
         </a>
       </div>
     </>
