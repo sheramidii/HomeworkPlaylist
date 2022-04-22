@@ -82,14 +82,15 @@ body {
 }
 
 .header-page{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: left;
-  margin-left: 744px;
+  display: grid;
+  grid-template: 100%/ 2fr 1fr;
+  justify-items: right;
+  justify-content: space-evenly;
+  margin-right: 130px;
 }
 
 .header-search{
-  margin-right: 80px;
+  display: block;
 }
 
 .search-section input{
@@ -108,14 +109,26 @@ body {
 
 .log-user{
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   align-items: center;
   margin-top: 8px;
   margin-bottom: 20px;
   height: fit-content;
-  
 }
 
+.profile{
+  display: flex;
+  flex-direction: row;
+  width: 100px;
+  height: 30px;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.profile img{
+  border-radius: 100%;
+}
 
 .song-info {
   display: flex;
@@ -158,17 +171,4 @@ body {
   text-align: center;
   padding: 30px;
   font-weight: bold;
-}
-
-.profile{
-  display: flex;
-  flex-direction: row;
-  width: 100px;
-  height: 30px;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.profile img{
-  border-radius: 100%;
 }

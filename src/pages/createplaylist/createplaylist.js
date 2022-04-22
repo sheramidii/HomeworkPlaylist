@@ -131,24 +131,28 @@ const CreatePlaylist = () => {
     <>
       <div className="search-section">
         <div className="header-page">
-          <div className="header-search">
-            <h1>Search Song</h1>
-            <input
-              placeholder="Artists, songs, or podcasts"
-              onChange={handleInput}
-            />
-            <button onClick={searchCard}>Search</button>
+          <div className="header-left">
+            <div className="header-search">
+              <h1>Search Song</h1>
+              <input
+                placeholder="Artists, songs, or albums"
+                onChange={handleInput}
+              />
+              <button onClick={searchCard}>Search</button>
+            </div>
           </div>
-          <div className="log-user">
-            <h2>Logged in as:</h2>
-            {userData ? (
-              <div className="profile">
-                <img src={userData.imagesUrl} width={30} alt="profImg" />
-                <h2> {userData.displayName} </h2>
-              </div>
-            ) : (
-              <p>Loading your profile...</p>
-            )}
+          <div className="header-right">
+            <div className="log-user">
+              <h2>Logged in as:</h2>
+              {userData ? (
+                <div className="profile">
+                  <img src={userData.imagesUrl} width={30} alt="profImg" />
+                  <h2> {userData.displayName} </h2>
+                </div>
+              ) : (
+                <p>Loading your profile...</p>
+              )}
+            </div>
           </div>
         </div>
         <FormSubmission
