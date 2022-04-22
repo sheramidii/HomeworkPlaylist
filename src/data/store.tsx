@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import accessTokenReducer from "./accessTokenReducer";
+import userReducer from "./userReducer";
 
 const store = configureStore({
     reducer: {
-        dataAccessToken: accessTokenReducer
+        user: userReducer
     }
 });
 

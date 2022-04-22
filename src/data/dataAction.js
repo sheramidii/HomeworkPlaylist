@@ -1,8 +1,15 @@
-const dataAccessToken = (parsedAccessToken) =>{
-    return{
-        type: "dataAccessToken",
-        payload: parsedAccessToken
-    };
-}
+const dataAccessToken = (parsedAccessToken) => {
+  return {
+    type: "dataAccessToken",
+    payload: parsedAccessToken,
+  };
+};
 
-export {dataAccessToken};
+const setUserData = (userData) => {
+  return {
+    type: "setUserData",
+    payload: userData,
+  };
+};
+
+export { dataAccessToken, setUserData };

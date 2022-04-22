@@ -1,29 +1,42 @@
-import queryString from 'query-string';
-import Login from '../login/login.js';
-import { useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { dataAccessToken } from '../../data/dataAction.js';
+import queryString from "query-string";
+import Login from "../login/login.js";
+import { useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { dataAccessToken, setUserData } from "../../data/dataAction.js";
+import axios from "axios";
 
 const Auth = () => {
-    const accessToken = useSelector(state => state.dataAccessToken.value);
-    const dispatch = useDispatch();
-    const history = useHistory();
+  const accessToken = useSelector((state) => state.user.accessToken);
+  const dispatch = useDispatch();
+  const history = useHistory();
 
-    useEffect(()=>{
-        const parsed = queryString.parse(window.location.hash);
-        dispatch(dataAccessToken(parsed.access_token));
-    }, [accessToken, dispatch])
+  useEffect(() => {
+    const parsed = queryString.parse(window.location.hash);
+    getUserData(parsed.access_token);
+    dispatch(dataAccessToken(parsed.access_token));
+  });
 
-    useEffect(()=>{
-        accessToken !== undefined && (
-            history.push("create-playlist")
-        )
-    }, [accessToken, history])
+  const getUserData = async (accessToken) => {
+    const data = await axios.get(
+      `https://api.spotify.com/v1/me?access_token=${accessToken}`
+    );
+    dispatch(
+      setUserData({
+        displayName: data.data.display_name,
+        imagesUrl: data.data.images[0].url,
+        user_id: data.data.id,
+      })
+    );
+    console.log(data);
+  };
 
-    return (
-        <Login/>
-    )
-}
+  useEffect(() => {
+    if (accessToken !== undefined) {
+      history.push("create-playlist");
+    }
+  }, [accessToken, history]);
 
+  return <Login />;
+};
 export default Auth;

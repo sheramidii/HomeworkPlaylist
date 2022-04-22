@@ -5,9 +5,13 @@ import FormSubmission from "../../component/form/form";
 import { url } from "../login/login.js";
 import { useAppSelector } from "../../data/hooks";
 import { searchCardData } from "../../api-call/search-card-data";
+// import { setUserData } from "../../data/dataAction";
+// import { useDispatch } from "react-redux";
 
 const CreatePlaylist = () => {
-  const accessToken = useAppSelector((state) => state.dataAccessToken.value);
+  const accessToken = useAppSelector((state) => state.user.accessToken);
+  const userData = useAppSelector((state) => state.user.userData);
+  // const dispatch = useDispatch();
   const [tracksData, setTracksData] = useState([]);
   const [query, setQuery] = useState();
   const [selectedTracks, setSelectedTracks] = useState([]);
@@ -68,28 +72,49 @@ const CreatePlaylist = () => {
   ///render tracks///
 
   ///user handler///
-  const [user, setUser] = useState({
-    displayName: "",
-    imagesUrl: "",
-    user_id: undefined,
-  });
+  // const getUserData = async (accessToken) => {
+  //   const data = await axios.get(
+  //     `https://api.spotify.com/v1/me?access_token=${accessToken}`
+  //   );
+  //   dispatch(
+  //     setUserData({
+  //       displayName: data.data.display_name,
+  //       imagesUrl: data.data.images[0].url,
+  //       user_id: data.data.id,
+  //     })
+  //   );
+  //   console.log(data);
+  // };
 
-  const getUserData = async () => {
-    try {
-      const data = await axios.get(
-        `https://api.spotify.com/v1/me?access_token=${accessToken}`
-      );
-      setUser({
-        ...user,
-        displayName: data.data.display_name,
-        imagesUrl: data.data.images[0].url,
-        user_id: data.data.id,
-      });
-      console.log(data);
-    } catch (error) {
-      console.log("get user data error");
-    }
-  };
+  // const renderUserData = () => {
+  //   return (
+  //     <div className="user-profile">
+  //       <img className="userImg" src={userData.imagesUrl} />
+  //     </div>
+  //   );
+  // };
+
+  // const [user, setUser] = useState({
+  //   displayName: "",
+  //   imagesUrl: "",
+  //   user_id: undefined,
+  // });
+
+  // const getUserData = async () => {
+  //   try {
+  //     const data = await axios.get(
+  //       `https://api.spotify.com/v1/me?access_token=${accessToken}`
+  //     );
+  //     setUser({
+  //       displayName: data.data.display_name,
+  //       imagesUrl: data.data.images[0].url,
+  //       user_id: data.data.id,
+  //     });
+  //     console.log(data);
+  //   } catch (error) {
+  //     console.log("get user data error");
+  //   }
+  // };
   ///user handler///
 
   /// form handler ///
@@ -120,7 +145,7 @@ const CreatePlaylist = () => {
     console.log(addPlaylist);
     await axios
       .post(
-        `https://api.spotify.com/v1/users/${user.user_id}/playlists`,
+        `https://api.spotify.com/v1/users/${userData.user_id}/playlists`,
         bodyParams,
         {
           headers: header,
@@ -161,8 +186,12 @@ const CreatePlaylist = () => {
             <button onClick={searchCard}>Search</button>
           </div>
           <div className="log-user">
-            <h2>Logged in as: {user.displayName}</h2>
-            <button onClick={getUserData}>Connect Your Spotify</button>
+            <h2>Logged in as:</h2>
+            <div className="profile">
+              <img src={userData.imagesUrl} width={20} alt="profImg" />
+              <h2> {userData.displayName} </h2>
+            </div>
+            {/* <button onClick={getUserData}>Connect Your Spotify</button> */}
           </div>
         </div>
         <FormSubmission
